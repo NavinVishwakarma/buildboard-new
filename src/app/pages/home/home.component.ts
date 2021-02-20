@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   testimonial: any;
   constructor(
     private api: ApiService
-  ) { 
+  ) {
     this.productFeaturedList = []
   }
 
@@ -22,7 +22,9 @@ export class HomeComponent implements OnInit {
     slidesToScroll: 1,
     arrows: true,
     infinite: true,
-    dots: true,
+    dots: false,
+    centerMode: true,
+    variableWidth: true,
     autoplay: true,
     autoplaySpeed: 4000,
     responsive: [

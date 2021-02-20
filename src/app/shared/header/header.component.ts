@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DefaultPopupComponent } from 'src/app/model/default-popup/default-popup.component';
 declare var $: any;
 
 @Component({
@@ -7,12 +9,14 @@ declare var $: any;
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
       this.jqueryImplement()
   }
-  
+
 jqueryImplement(){
   $("#click").click(function(){
     $(".search-form").toggleClass("add")
@@ -33,5 +37,15 @@ $('.navbar-nav li .clickD').click((e: any) =>{
       $this.toggleClass('toggled');
   }
 });
+}
+
+openLogin(){
+const dialogref = this.dialog.open(DefaultPopupComponent, {
+  width: '500',
+  backdropClass: 'bdrop',
+  data: {
+    type: 'login'
+  }
+})
 }
 }
