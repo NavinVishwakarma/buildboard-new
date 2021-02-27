@@ -8,6 +8,8 @@ import { CategoryComponent } from './category/category.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
+import { ProductListWithCategoryComponent } from './product-list-with-category/product-list-with-category.component';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { TermsAndConditionComponent } from './terms-and-condition/terms-and-cond
     CategoryComponent,
     ProductDetailsComponent,
     PrivacyPolicyComponent,
-    TermsAndConditionComponent
+    TermsAndConditionComponent,
+    ProductListWithCategoryComponent
   ],
   imports: [
     CommonModule,

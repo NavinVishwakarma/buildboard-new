@@ -1,14 +1,11 @@
 <section class="banner-section">
-    <img src="./assets/images/banner-image.jpg" alt="">
-    <div class="banner-cont container">
-      <div class="banner-wrap">
-        <h1>
-          <span>modern, high quality, and timeless</span>
-          Buildboard Furnishers Modern Furniture
-        </h1>
-        <a class="cmn-btn-white">shop collection</a>
+    <ngx-slick-carousel #slickModal="slick-carousel" class="carousel" [config]="slideConfigtestimonial">
+      <div ngxSlickItem *ngFor="let item of bannerImage">
+        <figure class="slide">
+          <img [src]="item?.image ? item?.image : './assets/images/banner-image.jpg'" alt="">
+        </figure>
       </div>
-    </div>
+    </ngx-slick-carousel>
   </section>
 
   <section class="product-section cmn-gap">
@@ -258,10 +255,10 @@
     <div class="container">
       <div class="row video-row">
         <div class="col-lg-6 video-col">
-          <div class="video-image">
+          <!-- <div class="video-image">
             <img src="./assets/images/video-image.jpg" alt="">
             <a data-fancybox href="#myVideo"><img src="./assets/images/play.svg" alt=""></a>
-          </div>
+          </div> -->
 
           <div controls id="myVideo" style="display: none;">
             <iframe width="640" height="360" src="https://www.youtube.com/embed/5Peo-ivmupE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

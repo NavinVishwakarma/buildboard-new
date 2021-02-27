@@ -32,40 +32,71 @@
           </div>
           <div class="col-lg-7 contact-col">
               <div class="cotact-form">
-                  <form>
+                  <form [formGroup]="contactForm">
                       <div class="row contact-form-row">
                           <div class="col-md-6 contact-form-col">
                               <div class="form-input">
-                                  <input type="text" placeholder="First Name">
-                              </div>
+                                  <input type="text" placeholder="First Name" formControlName="first_name">
+                                  <div class="error">
+                                    <p *ngIf="contactForm.controls.first_name.touched && contactForm.controls.first_name.hasError('required')">
+                                      This field is required.
+                                    </p>
+                                  </div>
+                                </div>
                           </div>
                           <div class="col-md-6 contact-form-col">
                               <div class="form-input">
-                                  <input type="text" placeholder="Last Name">
-                              </div>
+                                  <input type="text" placeholder="Last Name" formControlName="last_name">
+                                  <div class="error">
+                                    <p *ngIf="contactForm.controls.last_name.touched && contactForm.controls.last_name.hasError('required')">
+                                      This field is required.
+                                    </p>
+                                  </div>
+                                </div>
                           </div>
 
                           <div class="col-md-6 contact-form-col">
                               <div class="form-input">
-                                  <input type="email" placeholder="Email">
-                              </div>
+                                  <input type="email" placeholder="Email" formControlName="email">
+                                  <div class="error">
+                                    <p *ngIf="contactForm.controls.email.touched && contactForm.controls.email.hasError('required')">
+                                      This field is required.
+                                    </p>
+                                    <p *ngIf="contactForm.controls.email.touched && contactForm.controls.email.hasError('pattern')">
+                                      Email is invalid.
+                                    </p>
+                                  </div>
+                                </div>
                           </div>
 
                           <div class="col-md-6 contact-form-col">
                               <div class="form-input">
-                                  <input type="tel" placeholder="Phone">
+                                  <input type="tel" placeholder="Phone" mask="0000000000" formControlName="phone">
+                                  <div class="error">
+                                    <p *ngIf="contactForm.controls.phone.touched && contactForm.controls.phone.hasError('required')">
+                                      This field is required.
+                                    </p>
+                                    <p *ngIf="contactForm.controls['phone'].errors?.mask">
+                                      Mobile number must be at least 10 digits long.
+                                    </p>
+                                  </div>
+                                </div>
+                          </div>
+
+                          <div class="col-md-12 contact-form-col">
+                              <div class="form-input">
+                                <textarea placeholder="Massage" formControlName="description"></textarea>
+                                <div class="error">
+                                  <p *ngIf="contactForm.controls['description'].errors?.minlength">
+                                    Message must be at least 10 characters long.
+                                  </p>
+                                </div>
                               </div>
                           </div>
 
                           <div class="col-md-12 contact-form-col">
                               <div class="form-input">
-                                <textarea placeholder="Massage"></textarea>
-                              </div>
-                          </div>
-
-                          <div class="col-md-12 contact-form-col">
-                              <div class="form-input">
-                                <input type="submit" value="Submit">
+                                <input type="submit" value="Submit" (click)="submit(contactForm?.value)">
                               </div>
                           </div>
 

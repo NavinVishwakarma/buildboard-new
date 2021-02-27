@@ -4,6 +4,7 @@ import { CategoryComponent } from './category/category.component';
 import { HomeComponent } from './home/home.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductListWithCategoryComponent } from './product-list-with-category/product-list-with-category.component';
 import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
 
 
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'terms-and-Conditions',
     component: TermsAndConditionComponent
+  },
+  {
+    path: 'product-list/:categoryId',
+    component: ProductListWithCategoryComponent
   },
   {
     path: '',

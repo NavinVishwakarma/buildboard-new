@@ -4,10 +4,10 @@
         <div class="top-head-wrap">
           <div class="head-info">
             <ul>
-              <li>
+              <!-- <li>
                 <i><img src="./assets/images/pin.svg" alt=""></i>
                 <span>Store Location</span>
-              </li>
+              </li> -->
               <li>
                 <i><img src="./assets/images/email.svg" alt=""></i>
                 <a href="mailto:support@buildboardfurnishers.com">support@buildboardfurnishers.com</a>
@@ -16,8 +16,8 @@
           </div>
           <div class="gift-list">
             <ul>
-              <li><a >Gift Cards</a></li>
-              <li><a >FAQs</a></li>
+              <!-- <li><a >Gift Cards</a></li> -->
+              <!-- <li><a >FAQs</a></li> -->
             </ul>
           </div>
         </div>
@@ -40,24 +40,23 @@
           </div>
 
           <a class="navbar-brand" href="index.html"><img src="./assets/images/logo.png" alt=""></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <button id="click" (click)="toggelNavbar = !toggelNavbar" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse" [ngClass]="{'show': toggelNavbar}" id="navbarSupportedContent">
             <ul class="navbar-nav">
             <li ><a routerLink='./' [routerLinkActiveOptions]="{exact: true}" routerLinkActive="current-menu-item">Home</a></li>
-            <li class="menu-item-has-children">
-              <a [routerLink]="['/category']" routerLinkActive="current-menu-item">category</a>
-              <ul class="sub-menu">
-                  <li><a >category 1</a></li>
-                  <li><a >category 1</a></li>
-                  <li><a >category 1</a></li>
-                  <li><a >category 1</a></li>
+            <li class="menu-item-has-children" (click)="toggeleSubmenu = !toggeleSubmenu">
+              <a [routerLink]="['/category']" routerLinkActive="current-menu-item" >category</a>
+              <ul id="closeOnclick" class="sub-menu" [ngClass]="{'show': toggeleSubmenu}">
+                  <li *ngFor="let item of categoryList; let i=index">
+                    <a [routerLink]="['/product-list',item?.id]">{{item?.name}}</a>
+                  </li>
               </ul>
             </li>
             <li>
-              <a [routerLink]="['/Want-to-be-a-seller']" routerLinkActive="current-menu-item">Want to be a seller</a>
+              <a [routerLink]="['/Want-to-be-a-seller']" routerLinkActive="current-menu-item">Want to be a seller?</a>
             </li>
              <li>
                <a [routerLink]="['/contact']" routerLinkActive="current-menu-item">Contact</a>

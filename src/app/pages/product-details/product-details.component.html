@@ -1,200 +1,330 @@
-<section class="banner-section">
-  <img src="/assets/images/banner-image.jpg" alt="">
-  <div class="banner-cont container">
-    <div class="banner-wrap">
-        <h1>PRODUCT DETAILS</h1>
+<section class="product-details cmn-gap">
+  <div class="container">
+    <div class="product-wrapper">
+      <div class="row">
+        <div class="col-lg-6 product-col">
+          <ngx-slick-carousel #slickModal="slick-carousel" class="carousel" [config]="slideConfigtestimonial">
+            <div ngxSlickItem>
+              <div class="collection-image">
+                <img src="./assets/images/colection-iamge01.jpg" alt="">
+              </div>
+            </div>
+            <div ngxSlickItem>
+                <div class="collection-image">
+                  <img src="./assets/images/colection-iamge02.jpg" alt="">
+                </div>
+            </div>
+            <div ngxSlickItem>
+              <div class="collection-image">
+                <img src="./assets/images/colection-iamge03.jpg" alt="">
+              </div>
+            </div>
+          </ngx-slick-carousel>
+
+          <div class="color-comb">
+            <ul>
+              <li class="current"><a class="click">&nbsp;</a></li>
+              <li><a class="click">&nbsp;</a></li>
+              <li><a class="click">&nbsp;</a></li>
+              <li><a class="click">&nbsp;</a></li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-lg-6 product-col">
+          <div class="product-description">
+            <h2>Cobi Coffe table - $140.00</h2>
+
+            <div class="cart">
+              <a><img src="./assets/images/cart.svg" alt=""></a>
+            </div>
+
+            <div class="stock">
+              <span>Stock Available</span>
+            </div>
+
+            <div class="dettais-sec">
+              <h2>Details</h2>
+              <ul>
+                <li>100% Wooden</li>
+                <li>certified and safe</li>
+                <li>Good quality</li>
+              </ul>
+            </div>
+
+            <div class="cart-btn">
+              <a class="cmn-btn">ADD TO CART</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="product-details cmn-gap">
+<section class="product-section cmn-gap">
+  <div class="container">
+    <div class="ourwork-tab">
+      <ul class="resp-tabs-list hor_1 e-tab">
+          <li>Features</li>
+          <li>Properties</li>
+          <li>Warranty</li>
+          <li>Returns</li>
+          <li>Quality Promise</li>
+          <li>FAQ</li>
+      </ul>
+      <div class="resp-tabs-container hor_1">
+          <div class="content">
+            <div class="features-sec">
 
-    <div class="product-sec" id="app">
-        <div class="container container-space">
-          <div class="row product-row">
-            <div class="col-md-6">
-              <img class="product-img" :src="bannerImage" alt="" />
-              <div class="product-thumbnails">
-                <ul>
-                  <li v-for="(image, index) in productImages" :class="[activeClass == index ? 'thumbnail-active': '']" :key="index"><img :src="image.imageUrl" alt="" /></li>
-                </ul>
+              <div class="features-sec-cont">
+                <h4>Seasoned solid wood frames</h4>
+                <p>
+                  This sofa’s frame is made from seasoned solid wood that undergoes a 3-step treatment for protection against
+                  borers and is kiln-dried for moisture control.
+                </p>
+              </div>
+
+              <div class="features-sec-cont">
+                <h4>Long-lasting suspension system</h4>
+                <p>
+                  This sofa is supported on a foundation of 3 inch wide elastic bands, thicker and more durable than the industry standard.
+                </p>
+              </div>
+
+              <div class="features-sec-cont">
+                <h4>Anti-sag construction</h4>
+                <p>
+                  This sofa is designed to combat sagging. The multi-density foam in the seat cushions reduces sagging due to prolonged use. A grid of polyfill
+                  pockets in the back cushions prevents the cushions from weighing down because of gravity.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="content">
+            <div class="Propertie-sec">
+              <div class="Propertie-wrap">
+                <div class="Propertie-col">
+                  <h4>Individual 1 Seater Dimensions :848.0 x 914.0 x 848.0 mm</h4>
+
+                  <ul>
+                    <li>Size:</li>
+                    <li>Variant Specific</li>
+                    <li>Country of Origin:</li>
+                    <li>INDIA</li>
+                    <li>Primary Room:</li>
+                    <li>Living Room</li>
+                    <li>Net Quantity:</li>
+                    <li>1N</li>
+                  </ul>
+
+                </div>
+
+                <div class="Propertie-col">
+                  <h4>Individual 2 Seater Dimensions :848.0 x 1466.0 x 848.0 mm</h4>
+
+                  <ul>
+                    <li>Cushioned Seating:</li>
+                    <li>Yes</li>
+                    <li>Material Subtype:</li>
+                    <li>Polyester</li>
+                    <li>Outdoor:</li>
+                    <li>No</li>
+                  </ul>
+
+                </div>
+
+                <div class="Propertie-col">
+                  <h4>Individual 3 Seater Dimensions :848.0 x 2014.0 x 848.0 mm</h4>
+
+                  <ul>
+                    <li>Is Upholstered:</li>
+                    <li>Yes</li>
+                    <li>Armrest:</li>
+                    <li>Yes</li>
+                    <li>Material:</li>
+                    <li>Fabric</li>
+                  </ul>
+
+                </div>
+
               </div>
             </div>
-            <!-- <div class="col-md-6">
-              <h2 class="my-4">{{productTitle}} - {{productPrice}}</h2>
-              <h3 class="my-3">
-                <svg width="36" height="36" viewBox="0 0 24 24">
-                  <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
-                </svg>
-                {{cart}}
-              </h3>
-              <h4 v-if="stockAvailability">Stock Available</h4>
-              <h4 v-else="stockAvailability">Oops!! Out Of Stock</h4>
-              <h3 class="my-3">Details</h3>
-              <ul v-for="detail in productChecks">
-                <li>{{detail}}</li>
+          </div>
+
+          <div class="content">
+            <div class="warranty-sec">
+              <ul>
+                <li>There is a 36 month warranty on the sofa structure, which protects the buyer from manufacturing defects.</li>
+                <li>There is a 36 month warranty on the cushions against manufacturing defects.</li>
+                <li>Manufacturing defects are identified as collapsing of cushions, i.e. if your seat or back cushions sink in and don't spring back.</li>
+                <li>Normal usage or normal wear is not covered under warranty. All cushions soften with regular use and conform to the shape of the user over time.</li>
+                <li>Fibre-filled backs and armrests will flatten with regular use.</li>
+                <li>There is no warranty on the upholstery except luxe range of fabrics</li>
+                <li>
+                    There is a 36 month warranty on our luxe range of fabrics The fabrics in two colors - Hazel Wood Brown and Chambray Blue - come with a 5-year
+                    warranty.T&C Luxe Fabric
+                </li>
+                <li>This warranty is applicable to products purchased on or after 21st September 2018.</li>
+                <li>
+                    There can be a minute difference in fabric color and wood finish between the images here and the actual product. This is caused by the
+                    difference in screen calibrations and resolutions across different displays.
+                  </li>
+                  <li>It is acceptable to have a slight mismatch in dimensions up to 12mm in upholstered products and up to 6mm in non upholstered.</li>
               </ul>
-              <button type="button" class="btn btn-outline-primary btn-lg btn-block btn-custom-color" @click="addToCart">
-                ADD TO CART
-              </button>
-            </div> -->
+            </div>
           </div>
-
-          <div class="prodcut-description">
-              <h3>Product Description</h3>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
+          <div class="content">
+            <div class="warranty-sec">
+              <ul>
+                <li>
+                  In case of cancellation of this sofa or any Made To Order product (“MTO”) within 24 hours of placing the order, a
+                  full refund will be initiated. Post the 24-hour window, you will be charged 25% of the order value as a restocking
+                  fee. Post-delivery/installation (as applicable), you will be charged 100% of the order value on cancellation.
+                </li>
+              </ul>
+            </div>
           </div>
+          <div class="content">
+            <div class="warranty-sec">
+              <ul>
+                <li>Each product has gone through a stringent quality checking process in 3-stages, with a checkpoint of over 50 quality aspects</li>
+                <li>We work very closely with our vendors to ensure best-in-class quality of raw material and finished designs.</li>
+                <li>
+                  NOTE : Urban Ladder makes all efforts to ensure that products with wood finishes like Teak, Mahogany etc are colour
+                  matched to ensure minimum variations between other products of the same colour. There could be minor variations in
+                  colour especially over different batches of products over a period of time.  Please consider this while adding products
+                  to your existing furniture set.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="content">
+            <div class="faq-sec">
+              <div class="faq-cont">
+                <h4>1. How do I order a set?</h4>
+                <p>
+                  Here is how you can place an order:<br>
+                  (a) Click on 'Order Your Set' on the top right of the page.<br>
+                  (b) Choose one of the pre-defined sets (E.g. 3-2 or 3-2-1 etc.). You could also choose additional sofas (1 or 2 or 3 seater) to add to your set.<br>
+                  (c) Click 'BUY NOW' and pay the total cost using our payment gateway.
+                </p>
+              </div>
 
-        </div>
+              <div class="faq-cont">
+                <h4>2. Can I choose any combination of pieces for my sofa set?</h4>
+                <p>
+                  Yes, you can choose any combination you desire. However, the combinations we have created are easy on the pocket compared
+                  to buying individual pieces and creating your own set.
+                </p>
+
+              </div>
+
+              <div class="faq-cont">
+                <h4>3. Is the sofa customizable?</h4>
+                <p>
+                  Nope. The design of the sofa is not customisable. However, we have so many design options to choose from, you're sure to find
+                  something you love.
+                </p>
+
+              </div>
+
+              <div class="faq-cont">
+                <h4>4. Can I provide my own fabric?</h4>
+                <p>
+                  Sorry! At this point, we are unable to work with customer-provided fabrics. However, every sofa will be available in a range of exciting colour options.
+                </p>
+
+              </div>
+
+              <div class="faq-cont">
+                <h4>5. What do I need to check for when the sofa is delivered?</h4>
+                <p>
+                  (a) You should check to ensure that the fabric across the sofa is well stitched and there is no tear / gap in the stitching across
+                  the entire front, back and sides of the sofa<br>
+                  (b) You should ensure that there are no stains on the fabric across the entire front, back and sides of the sofa<br>
+                  (c) You should ensure that the sofa is steady on your floor. Different floors may have a slight incline that may not be noticeable
+                  to the naked eye; in case the sofa wobbles unevenly on your floor, we will do the needful to make sure it stands firm.
+                </p>
+
+              </div>
+
+              <div class="faq-cont">
+                <h4>6. Will my sofa fit in through the stairs and doorway?</h4>
+                <p>
+                  All our sofas are built to fit through regular stairwells and service lifts. Also, we give detailed dimensions on our website. We request you to please
+                  check and ensure before delivery that the sofa can be installed in your home through this mode. We are not in a position currently to get it crane-lifted
+                   through the balcony or any other such method.
+                </p>
+
+              </div>
+
+              <div class="faq-cont">
+                <h4>7. Does Urban Ladder provide services such as cleaning sofa / changing cushions at a later point in time?</h4>
+                <p>
+                  At this point, we are unable to assist with sofa care services such as cleaning the sofa / changing cushions. However, we can recommend using the
+                  services of a professional sofa cleaning service to ensure a longer life for your sofas.
+                </p>
+
+              </div>
+
+              <div class="faq-cont">
+                <h4>8. Why should I buy from Urban Ladder?</h4>
+                <p>
+                  We believe that the product we offer is distinctive in terms of design, comfort, quality and function and comes to you at a very attractive price.
+                  Combined with our rigorous quality process, efficient delivery and always ready-to-help customer service, we know we have an offering almost impossible
+                  to beat.
+                </p>
+
+              </div>
+
+              <div class="faq-cont">
+                <h4>9. How do I know that the right material has been used in the sofa?</h4>
+                <p>
+                  We only use the most durable, high quality materials in building your sofa be it the frame, foam, fabric or cushion.
+                </p>
+
+              </div>
+
+              <div class="faq-cont">
+                <h4>10. How long will it take to deliver the sofa?</h4>
+                <p>
+                    For Fabric & Leatherette Sofas, we take up to 3 weeks to manufacture and deliver the sofa in Bangalore & Delhi/NCR. For customers from the
+                    rest of the serviced cities, we take up to 4 weeks to manufacture & deliver the sofa. For Leather Sofas, we take up to 7 weeks to
+                    manufacture and deliver the sofa to all cities.
+                </p>
+
+              </div>
+
+              <div class="faq-cont">
+                <h4>11 Can I return the sofa if I do not like it after I get it?</h4>
+                <p>
+                  No. Since sofas are made to order, we won't be able to accept returns or exchanges on sofas. In the case of any damages found at the time of delivery,
+                  we will replace the defective piece with a new one.
+                </p>
+
+              </div>
+
+              <div class="faq-cont">
+                <h4>12. Will the sofa colour be exactly the same as it appears on the swatches?</h4>
+                <p>
+                  While we do a Quality Check at our end for colour matching, a 5-10% variation in colour may appear in a batch depending upon
+                  conditions of production. As an industry standard, we allow for a maximum of a 10% variation. If this threshold is crossed,
+                  we reject the fabric batch. Within these limitations, we try our best to make sure that the perfect colour reaches you!
+                </p>
+
+                <p>
+                  Dimensions of sofa are as per what you see on the website with the possibility of 1 inch variance. As an industry standard we
+                  allow for a maximum of 1 inch tolerance.
+                </p>
+
+              </div>
+
+            </div>
+          </div>
       </div>
-
-</section>
-
-<section class="related-products product-section">
-    <div class="container">
-        <h2>Related Produucts</h2>
-
-        <div class="product-row row">
-            <div class="col-lg-4 col-md-6 product-col">
-              <div class="product-card text-center">
-                <div class="product-image">
-                 <a href="#url" style="background: url(/assets/images/product01.jpg) no-repeat center center;"></a>
-                  <span>-10%</span>
-                </div>
-                <div class="product-cont">
-                  <h4>Cobi Coffe table</h4>
-                  <span> <del>$150.00</del> $140.00</span>
-                </div>
-                <a class="cmn-btn" href="#url">add to cart</a>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 product-col">
-              <div class="product-card text-center">
-                <div class="product-image">
-                  <a href="#url" style="background: url(/assets/images/product02.jpg) no-repeat center center;"></a>
-                  <span>-10%</span>
-                </div>
-                <div class="product-cont">
-                  <h4>Cobi Coffe table</h4>
-                  <span> <del>$150.00</del> $140.00</span>
-                </div>
-                <a class="cmn-btn" href="#url">add to cart</a>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 product-col">
-              <div class="product-card text-center">
-                <div class="product-image">
-                  <a href="#url" style="background: url(/assets/images/product03.jpg) no-repeat center center;"></a>
-                  <span>-10%</span>
-                </div>
-                <div class="product-cont">
-                  <h4>Cobi Coffe table</h4>
-                  <span> <del>$150.00</del> $140.00</span>
-                </div>
-                <a class="cmn-btn" href="#url">add to cart</a>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 product-col">
-                <div class="product-card text-center">
-                  <div class="product-image">
-                   <a href="#url" style="background: url(/assets/images/product01.jpg) no-repeat center center;"></a>
-                    <span>-10%</span>
-                  </div>
-                  <div class="product-cont">
-                    <h4>Cobi Coffe table</h4>
-                    <span> <del>$150.00</del> $140.00</span>
-                  </div>
-                  <a class="cmn-btn" href="#url">add to cart</a>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 product-col">
-                <div class="product-card text-center">
-                  <div class="product-image">
-                    <a href="#url" style="background: url(/assets/images/product02.jpg) no-repeat center center;"></a>
-                    <span>-10%</span>
-                  </div>
-                  <div class="product-cont">
-                    <h4>Cobi Coffe table</h4>
-                    <span> <del>$150.00</del> $140.00</span>
-                  </div>
-                  <a class="cmn-btn" href="#url">add to cart</a>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 product-col">
-                <div class="product-card text-center">
-                  <div class="product-image">
-                    <a href="#url" style="background: url(/assets/images/product03.jpg) no-repeat center center;"></a>
-                    <span>-10%</span>
-                  </div>
-                  <div class="product-cont">
-                    <h4>Cobi Coffe table</h4>
-                    <span> <del>$150.00</del> $140.00</span>
-                  </div>
-                  <a class="cmn-btn" href="#url">add to cart</a>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 product-col">
-                <div class="product-card text-center">
-                  <div class="product-image">
-                   <a href="#url" style="background: url(/assets/images/product01.jpg) no-repeat center center;"></a>
-                    <span>-10%</span>
-                  </div>
-                  <div class="product-cont">
-                    <h4>Cobi Coffe table</h4>
-                    <span> <del>$150.00</del> $140.00</span>
-                  </div>
-                  <a class="cmn-btn" href="#url">add to cart</a>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 product-col">
-                <div class="product-card text-center">
-                  <div class="product-image">
-                    <a href="#url" style="background: url(/assets/images/product02.jpg) no-repeat center center;"></a>
-                    <span>-10%</span>
-                  </div>
-                  <div class="product-cont">
-                    <h4>Cobi Coffe table</h4>
-                    <span> <del>$150.00</del> $140.00</span>
-                  </div>
-                  <a class="cmn-btn" href="#url">add to cart</a>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 product-col">
-                <div class="product-card text-center">
-                  <div class="product-image">
-                    <a href="#url" style="background: url(/assets/images/product03.jpg) no-repeat center center;"></a>
-                    <span>-10%</span>
-                  </div>
-                  <div class="product-cont">
-                    <h4>Cobi Coffe table</h4>
-                    <span> <del>$150.00</del> $140.00</span>
-                  </div>
-                  <a class="cmn-btn" href="#url">add to cart</a>
-                </div>
-              </div>
-
-          </div>
-
-    </div>
+  </div>
+  </div>
 </section>

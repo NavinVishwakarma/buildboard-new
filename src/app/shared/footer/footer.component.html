@@ -34,11 +34,9 @@
         <div class="footer-mid-col">
           <h5>Categories</h5>
           <ul>
-            <li><a >Category1</a></li>
-            <li><a >Category2</a></li>
-            <li><a >Category3</a></li>
-            <li><a >Category4</a></li>
-            <li><a >Category5</a></li>
+            <li *ngFor="let item of categoryList; let i=index">
+              <a *ngIf="i < 5" [routerLink]="['/product-list',item?.id]">{{item?.name}}</a>
+            </li>
           </ul>
         </div>
         <div class="footer-mid-col">

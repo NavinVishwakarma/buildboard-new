@@ -74,24 +74,144 @@
 
                           <div class="col-md-6 contact-form-col">
                               <div class="form-input">
-                                  <input type="tel" placeholder="Phone" formControlName="phone">
+                                  <input type="tel" mask="0000000000" placeholder="Phone" formControlName="phone">
                                   <div class="error">
                                     <p
                                       *ngIf="contactForm.controls.phone.touched && contactForm.controls.phone.hasError('required')">
                                       This field is required.
                                     </p>
+                                    <p *ngIf="contactForm.controls['phone'].errors?.mask">
+                                      Mobile number must be at least 10 digits long.
+                                    </p>
                                   </div>
                                 </div>
                           </div>
-
+                          <ng-container>
+                            <div class="col-md-6 contact-form-col">
+                              <div class="form-input">
+                                <input type="text" mask="0*" placeholder="Pincode" formControlName="pincode">
+                                <div class="error">
+                                  <p *ngIf="contactForm.controls.pincode.touched && contactForm.controls.pincode.hasError('required')">
+                                    This field is required.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 contact-form-col">
+                              <div class="form-input">
+                                <input type="text" placeholder="City" formControlName="city">
+                                <div class="error">
+                                  <p *ngIf="contactForm.controls.city.touched && contactForm.controls.city.hasError('required')">
+                                    This field is required.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 contact-form-col">
+                              <div class="form-input">
+                                <input type="text" mask="00000" placeholder="Zip" formControlName="zipcode">
+                                <div class="error">
+                                  <p *ngIf="contactForm.controls.zipcode.touched && contactForm.controls.zipcode.hasError('required')">
+                                    This field is required.
+                                  </p>
+                                  <p *ngIf="contactForm.controls['zipcode'].errors?.mask">
+                                    Zip must be at least 5 digits long.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 contact-form-col">
+                              <h4 style="text-align: center;">YOUR BUSINESS DETAILS</h4>
+                            </div>
+                            <div class="col-md-6 contact-form-col">
+                              <div class="form-input">
+                                <select formControlName="company_type">
+                                  <option value="">Company Type</option>
+                                  <option *ngFor="let type of companyType" [value]="type?.name">{{type?.name}}</option>
+                                </select>
+                              </div>
+                              <div class="error">
+                                <p
+                                  *ngIf="contactForm.controls.company_type.touched && contactForm.controls.company_type.hasError('required')">
+                                  This field is required.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="col-md-6 contact-form-col">
+                              <div class="form-input">
+                                <input type="text" placeholder="Company name" formControlName="company_name">
+                                <div class="error">
+                                  <p
+                                    *ngIf="contactForm.controls.company_name.touched && contactForm.controls.company_name.hasError('required')">
+                                    This field is required.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 contact-form-col">
+                              <div class="form-input">
+                                <input type="text" placeholder="Company number" mask="0000000000" formControlName="company_number">
+                                <div class="error">
+                                  <p
+                                    *ngIf="contactForm.controls.company_number.touched && contactForm.controls.company_number.hasError('required')">
+                                    This field is required.
+                                  </p>
+                                  <p *ngIf="contactForm.controls['company_number'].errors?.mask">
+                                    Company number must be at least 10 digits long.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 contact-form-col">
+                              <div class="form-input">
+                                <input type="text" placeholder="Business phone number" mask="0000000000"
+                                  formControlName="business_number">
+                                <div class="error">
+                                  <p
+                                    *ngIf="contactForm.controls.business_number.touched && contactForm.controls.business_number.hasError('required')">
+                                    This field is required.
+                                  </p>
+                                  <p *ngIf="contactForm.controls['business_number'].errors?.mask">
+                                    Business phone number must be at least 10 digits long.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 contact-form-col">
+                              <div class="form-input">
+                                <input type="text" mask="00000" placeholder="Gst number" formControlName="gst">
+                                <div class="error">
+                                  <p *ngIf="contactForm.controls.gst.touched && contactForm.controls.gst.hasError('required')">
+                                    This field is required.
+                                  </p>
+                                  <p *ngIf="contactForm.controls['gst'].errors?.mask">
+                                    Gst number must be at least 5 digits long.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 contact-form-col">
+                              <div class="custom-file">
+                                <input type="file" id="customFile" (change)="uploadDocumentInsuranceInit($event)" accept=".pdf">
+                                <label class="custom-file-label" for="customFile">Upload your catalogue</label>
+                              </div>
+                              <p *ngIf="this.contactForm.controls.catelog.value">{{this.contactForm.controls.catelog.value.name}}
+                              </p>
+                            </div>
+                          </ng-container>
                           <div class="col-md-12 contact-form-col">
                               <div class="form-input">
                                 <textarea placeholder="Massage" formControlName="message"></textarea>
+                                <div class="error">
+                                  <p *ngIf="contactForm.controls['message'].errors?.minlength">
+                                    Message must be at least 10 characters long.
+                                  </p>
+                                </div>
                               </div>
                           </div>
 
                           <div class="col-md-12 contact-form-col">
-                              <div class="form-input" (click)="submitForm()">
+                              <div class="form-input" (click)="submit(contactForm?.value)">
                                 <input type="submit" value="Submit">
                               </div>
                           </div>
