@@ -11,10 +11,12 @@ export class HomeComponent implements OnInit {
   productFeaturedList: any;
   bannerImage: any;
   testimonial: any;
+  featuredValue: any;
   constructor(
     private api: ApiService
   ) {
-    this.productFeaturedList = []
+    this.productFeaturedList = [];
+    this.featuredValue = 'latest'
   }
 
   slideConfig = {
@@ -87,5 +89,8 @@ export class HomeComponent implements OnInit {
         this.testimonial = undefined;
       }
     });
+  }
+  getFetureproductvalue(type: any){
+    this.featuredValue = type
   }
 }

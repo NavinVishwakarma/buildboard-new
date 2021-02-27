@@ -15,12 +15,12 @@
     <div class="container">
       <div class="ourwork-tab">
         <ul class="resp-tabs-list hor_1 e-tab">
-            <li>Latest Products</li>
-            <li>Best Sellers</li>
-            <li>Featured Products</li>
+            <li [ngClass]="{'resp-tab-active': featuredValue === 'latest'}" (click)="getFetureproductvalue('latest')">Latest Products</li>
+            <li [ngClass]="{'resp-tab-active': featuredValue === 'best_seller'}"  (click)="getFetureproductvalue('best_seller')">Best Sellers</li>
+            <li [ngClass]="{'resp-tab-active': featuredValue === 'fetured_product'}"  (click)="getFetureproductvalue('fetured_product')">Featured Products</li>
         </ul>
         <div class="resp-tabs-container hor_1">
-            <div class="content">
+            <div class="content" *ngIf="featuredValue === 'latest'">
               <div class="product-row row">
                 <div class="col-lg-4 col-md-6 product-col">
                   <div class="product-card">
@@ -60,7 +60,7 @@
                 </div>
               </div>
             </div>
-            <div class="content">
+            <div class="content" *ngIf="featuredValue === 'best_seller'">
               <div class="product-row row">
                 <div class="col-lg-4 col-md-6 product-col">
                   <div class="product-card">
@@ -100,7 +100,7 @@
                 </div>
               </div>
             </div>
-            <div class="content">
+            <div class="content" *ngIf="featuredValue === 'fetured_product'">
               <div class="product-row row">
                 <div class="col-lg-4 col-md-6 product-col">
                   <div class="product-card">

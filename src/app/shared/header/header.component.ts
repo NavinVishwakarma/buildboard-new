@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DefaultPopupComponent } from 'src/app/model/default-popup/default-popup.component';
+import { EventService } from 'src/app/services/event.service';
+import { DefaultPopupComponent } from '../../model/default-popup/default-popup.component';
 declare var $: any;
 
 @Component({
@@ -9,12 +10,14 @@ declare var $: any;
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  contactFormType = 'contact';
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private event: EventService
   ) { }
 
   ngOnInit(): void {
-      this.jqueryImplement()
+      this.jqueryImplement();
   }
 
 jqueryImplement(){
@@ -41,7 +44,7 @@ $('.navbar-nav li .clickD').click((e: any) =>{
 
 openLogin(){
 const dialogref = this.dialog.open(DefaultPopupComponent, {
-  width: '500',
+  width: '300',
   backdropClass: 'bdrop',
   data: {
     type: 'login'

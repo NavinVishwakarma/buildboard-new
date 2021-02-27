@@ -46,9 +46,9 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-            <li class="current-menu-item"><a >Home</a></li>
+            <li ><a routerLink='./' [routerLinkActiveOptions]="{exact: true}" routerLinkActive="current-menu-item">Home</a></li>
             <li class="menu-item-has-children">
-              <a >category</a>
+              <a [routerLink]="['/category']" routerLinkActive="current-menu-item">category</a>
               <ul class="sub-menu">
                   <li><a >category 1</a></li>
                   <li><a >category 1</a></li>
@@ -56,16 +56,12 @@
                   <li><a >category 1</a></li>
               </ul>
             </li>
-            <li class="menu-item-has-children">
-              <a >Want to be a seller</a>
-              <ul class="sub-menu">
-                  <li><a >page 1</a></li>
-                  <li><a >page 1</a></li>
-                  <li><a >page 1</a></li>
-                  <li><a >page 1</a></li>
-              </ul>
+            <li>
+              <a [routerLink]="['/Want-to-be-a-seller']" routerLinkActive="current-menu-item">Want to be a seller</a>
             </li>
-             <li><a >Contact</a></li>
+             <li>
+               <a [routerLink]="['/contact']" routerLinkActive="current-menu-item">Contact</a>
+              </li>
             </ul>
           </div>
 

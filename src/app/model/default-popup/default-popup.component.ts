@@ -10,13 +10,13 @@ export class DefaultPopupComponent implements OnInit {
   modeldata: any;
 
   constructor(
-    private dialogRef: MatDialogRef<DefaultPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<DefaultPopupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.modeldata = data;
+    console.log(data.type);
    }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
   }
 

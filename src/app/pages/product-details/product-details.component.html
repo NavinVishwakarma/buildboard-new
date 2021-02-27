@@ -1,0 +1,200 @@
+<section class="banner-section">
+  <img src="/assets/images/banner-image.jpg" alt="">
+  <div class="banner-cont container">
+    <div class="banner-wrap">
+        <h1>PRODUCT DETAILS</h1>
+    </div>
+  </div>
+</section>
+
+<section class="product-details cmn-gap">
+
+    <div class="product-sec" id="app">
+        <div class="container container-space">
+          <div class="row product-row">
+            <div class="col-md-6">
+              <img class="product-img" :src="bannerImage" alt="" />
+              <div class="product-thumbnails">
+                <ul>
+                  <li v-for="(image, index) in productImages" :class="[activeClass == index ? 'thumbnail-active': '']" :key="index"><img :src="image.imageUrl" alt="" /></li>
+                </ul>
+              </div>
+            </div>
+            <!-- <div class="col-md-6">
+              <h2 class="my-4">{{productTitle}} - {{productPrice}}</h2>
+              <h3 class="my-3">
+                <svg width="36" height="36" viewBox="0 0 24 24">
+                  <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
+                </svg>
+                {{cart}}
+              </h3>
+              <h4 v-if="stockAvailability">Stock Available</h4>
+              <h4 v-else="stockAvailability">Oops!! Out Of Stock</h4>
+              <h3 class="my-3">Details</h3>
+              <ul v-for="detail in productChecks">
+                <li>{{detail}}</li>
+              </ul>
+              <button type="button" class="btn btn-outline-primary btn-lg btn-block btn-custom-color" @click="addToCart">
+                ADD TO CART
+              </button>
+            </div> -->
+          </div>
+
+          <div class="prodcut-description">
+              <h3>Product Description</h3>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
+          </div>
+
+        </div>
+      </div>
+
+</section>
+
+<section class="related-products product-section">
+    <div class="container">
+        <h2>Related Produucts</h2>
+
+        <div class="product-row row">
+            <div class="col-lg-4 col-md-6 product-col">
+              <div class="product-card text-center">
+                <div class="product-image">
+                 <a href="#url" style="background: url(/assets/images/product01.jpg) no-repeat center center;"></a>
+                  <span>-10%</span>
+                </div>
+                <div class="product-cont">
+                  <h4>Cobi Coffe table</h4>
+                  <span> <del>$150.00</del> $140.00</span>
+                </div>
+                <a class="cmn-btn" href="#url">add to cart</a>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 product-col">
+              <div class="product-card text-center">
+                <div class="product-image">
+                  <a href="#url" style="background: url(/assets/images/product02.jpg) no-repeat center center;"></a>
+                  <span>-10%</span>
+                </div>
+                <div class="product-cont">
+                  <h4>Cobi Coffe table</h4>
+                  <span> <del>$150.00</del> $140.00</span>
+                </div>
+                <a class="cmn-btn" href="#url">add to cart</a>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 product-col">
+              <div class="product-card text-center">
+                <div class="product-image">
+                  <a href="#url" style="background: url(/assets/images/product03.jpg) no-repeat center center;"></a>
+                  <span>-10%</span>
+                </div>
+                <div class="product-cont">
+                  <h4>Cobi Coffe table</h4>
+                  <span> <del>$150.00</del> $140.00</span>
+                </div>
+                <a class="cmn-btn" href="#url">add to cart</a>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 product-col">
+                <div class="product-card text-center">
+                  <div class="product-image">
+                   <a href="#url" style="background: url(/assets/images/product01.jpg) no-repeat center center;"></a>
+                    <span>-10%</span>
+                  </div>
+                  <div class="product-cont">
+                    <h4>Cobi Coffe table</h4>
+                    <span> <del>$150.00</del> $140.00</span>
+                  </div>
+                  <a class="cmn-btn" href="#url">add to cart</a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 product-col">
+                <div class="product-card text-center">
+                  <div class="product-image">
+                    <a href="#url" style="background: url(/assets/images/product02.jpg) no-repeat center center;"></a>
+                    <span>-10%</span>
+                  </div>
+                  <div class="product-cont">
+                    <h4>Cobi Coffe table</h4>
+                    <span> <del>$150.00</del> $140.00</span>
+                  </div>
+                  <a class="cmn-btn" href="#url">add to cart</a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 product-col">
+                <div class="product-card text-center">
+                  <div class="product-image">
+                    <a href="#url" style="background: url(/assets/images/product03.jpg) no-repeat center center;"></a>
+                    <span>-10%</span>
+                  </div>
+                  <div class="product-cont">
+                    <h4>Cobi Coffe table</h4>
+                    <span> <del>$150.00</del> $140.00</span>
+                  </div>
+                  <a class="cmn-btn" href="#url">add to cart</a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 product-col">
+                <div class="product-card text-center">
+                  <div class="product-image">
+                   <a href="#url" style="background: url(/assets/images/product01.jpg) no-repeat center center;"></a>
+                    <span>-10%</span>
+                  </div>
+                  <div class="product-cont">
+                    <h4>Cobi Coffe table</h4>
+                    <span> <del>$150.00</del> $140.00</span>
+                  </div>
+                  <a class="cmn-btn" href="#url">add to cart</a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 product-col">
+                <div class="product-card text-center">
+                  <div class="product-image">
+                    <a href="#url" style="background: url(/assets/images/product02.jpg) no-repeat center center;"></a>
+                    <span>-10%</span>
+                  </div>
+                  <div class="product-cont">
+                    <h4>Cobi Coffe table</h4>
+                    <span> <del>$150.00</del> $140.00</span>
+                  </div>
+                  <a class="cmn-btn" href="#url">add to cart</a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 product-col">
+                <div class="product-card text-center">
+                  <div class="product-image">
+                    <a href="#url" style="background: url(/assets/images/product03.jpg) no-repeat center center;"></a>
+                    <span>-10%</span>
+                  </div>
+                  <div class="product-cont">
+                    <h4>Cobi Coffe table</h4>
+                    <span> <del>$150.00</del> $140.00</span>
+                  </div>
+                  <a class="cmn-btn" href="#url">add to cart</a>
+                </div>
+              </div>
+
+          </div>
+
+    </div>
+</section>

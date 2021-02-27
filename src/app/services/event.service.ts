@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class EventService {
 
   constructor() { }
-  private contactUs = new BehaviorSubject('Contact Us');
+  private contactUs = new BehaviorSubject('Contact');
   contactUsValue = this.contactUs.asObservable();
 
 

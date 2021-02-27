@@ -242,7 +242,7 @@ border:none; -webkit-border-radius: 0; -moz-border-radius: 0;
 .navbar-nav > li:last-child{margin-right:0;}
 .navbar-nav > li:first-child{margin-left:0;}
 .navbar-nav > li > a{ color: #000; font-size: 13px; text-transform: uppercase; font-weight: 600; }
-.navbar-nav > li.current-menu-item > a,
+.navbar-nav > li > a.current-menu-item,
 .navbar-nav > li > a:hover,
 .navbar-nav > li.menu-item-has-children:hover > a{color:#ff0000;}
 
@@ -550,7 +550,7 @@ border:none; -webkit-border-radius: 0; -moz-border-radius: 0;
 
 .product-section .ourwork-tab ul li.resp-tab-active{ color: #000; }
 
-.product-section .ourwork-tab ul{ display: flex; justify-content: center; }
+.product-section .ourwork-tab ul{ display: flex; justify-content: center;list-style: none; }
 
 .product-section .resp-tab-content{ border: none; padding: 36px 15px; }
 
@@ -859,7 +859,7 @@ border:none; -webkit-border-radius: 0; -moz-border-radius: 0;
 }
 
 .footer-mid .footer-mid-wrap .footer-mid-col ul li a:hover,
-.footer-mid .footer-mid-wrap .footer-mid-col ul li.current-menu-item a{ color: #000; }
+.footer-mid .footer-mid-wrap .footer-mid-col ul li a.current-menu-item{ color: #000; }
 
 .footer-bottom{ padding: 30px 0; }
 
@@ -869,7 +869,7 @@ border:none; -webkit-border-radius: 0; -moz-border-radius: 0;
 
 .footer-bottom .footer-bottom-row span{ display: inline-block; }
 
-.myModal{ padding: 20px; width: 30%; }
+.myModal{ padding: 20px; width: 100%; }
 
 .myModal h3{ text-align: center; font-weight: 700; }
 
@@ -1450,15 +1450,29 @@ h3 { font-size: 23px; }
 
 .cotact-form{ padding: 20px; }
 
-.myModal .fancybox{ font-size: 15px; }
+.myModal .fancybox{ font-size: 15px; }}
 
+.error{
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+}
+.about-section .heading{
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  text-align: center;
 }
 
+.about-section .about-image > img{ width: 100%; }
 
+.about-section .about-row:nth-child(odd) .about-left{ order: 2; }
 
+.about-section .about-row{ margin-bottom: 60px; }
 
+.about-section .about-row:last-child{ margin-bottom: 0; }
 
+.about-section .about-row .about-right{
+   padding-left: 45px;
+}
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.about-section .about-row:nth-child(odd) .about-right{ padding-left: 15px; padding-right: 45px; }
