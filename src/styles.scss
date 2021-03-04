@@ -1090,7 +1090,7 @@ border:none; -webkit-border-radius: 0; -moz-border-radius: 0;
 .product-details .cart a{ display: inline-block; width: 35px; height: 35px; line-height: 0; position: relative;  }
 
 .product-details .cart a::before{
-  content: "(0)";
+  // content: "(0)";
   position: absolute;
   top: 0;
   right: -35px;

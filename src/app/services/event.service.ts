@@ -7,11 +7,11 @@ import { BehaviorSubject } from 'rxjs';
 export class EventService {
 
   constructor() { }
-  private contactUs = new BehaviorSubject('Contact');
-  contactUsValue = this.contactUs.asObservable();
+  private cartNumber = new BehaviorSubject(0);
+  totalAddedcartValue = this.cartNumber.asObservable();
 
 
-  setContactUstype(isLoading: string) {
-    return this.contactUs.next(isLoading);
+  setCartEmit(isLoading: number): void {
+    return this.cartNumber.next(isLoading);
   }
 }

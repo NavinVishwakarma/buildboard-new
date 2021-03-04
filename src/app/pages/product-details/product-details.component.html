@@ -6,17 +6,17 @@
           <ngx-slick-carousel #slickModal="slick-carousel" class="carousel" [config]="slideConfigtestimonial">
             <div ngxSlickItem>
               <div class="collection-image">
-                <img src="./assets/images/colection-iamge01.jpg" alt="">
+                <img [src]="productDetail?.image ? productDetail?.image : './assets/images/colection-iamge01.jpg'" alt="">
               </div>
             </div>
             <div ngxSlickItem>
                 <div class="collection-image">
-                  <img src="./assets/images/colection-iamge02.jpg" alt="">
+                  <img [src]="productDetail?.image ? productDetail?.image :'./assets/images/colection-iamge02.jpg'" alt="">
                 </div>
             </div>
             <div ngxSlickItem>
               <div class="collection-image">
-                <img src="./assets/images/colection-iamge03.jpg" alt="">
+                <img [src]="productDetail?.image ? productDetail?.image :'./assets/images/colection-iamge03.jpg'" alt="">
               </div>
             </div>
           </ngx-slick-carousel>
@@ -33,12 +33,10 @@
         </div>
         <div class="col-lg-6 product-col">
           <div class="product-description">
-            <h2>Cobi Coffe table - $140.00</h2>
-
+            <h2>{{productDetail?.name}} - {{productDetail?.offer_price ? (productDetail?.offer_price | number: '.2') : (productDetail?.price | number: '.2')}}</h2>
             <div class="cart">
-              <a><img src="./assets/images/cart.svg" alt=""></a>
+              <a><img src="./assets/images/cart.svg" alt="">({{productDetail?.itemCount}})</a>
             </div>
-
             <div class="stock">
               <span>Stock Available</span>
             </div>
@@ -52,8 +50,8 @@
               </ul>
             </div>
 
-            <div class="cart-btn">
-              <a class="cmn-btn">ADD TO CART</a>
+            <div class="cart-btn" style="cursor: pointer;">
+              <a class="cmn-btn" (click)="addTocart()">ADD TO CART</a>
             </div>
           </div>
         </div>
