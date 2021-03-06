@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
     SharedModule,
     BrowserAnimationsModule,
     MaterialModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    NgOtpInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

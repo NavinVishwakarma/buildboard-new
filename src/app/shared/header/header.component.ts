@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from 'src/app/auth/login/login.component';
 import { ApiService } from 'src/app/services/api.service';
 import { EventService } from 'src/app/services/event.service';
-import { DefaultPopupComponent } from '../../model/default-popup/default-popup.component';
+import { StorageService } from 'src/app/services/storage.service';
 declare var $: any;
 
 @Component({
@@ -16,10 +17,13 @@ export class HeaderComponent implements OnInit {
   toggeleSubmenu = false;
   categoryList: any;
   cartNumber: number | undefined;
+  isLogedin: boolean | undefined;
+  userName: any;
   constructor(
     private dialog: MatDialog,
     private event: EventService,
-    private api: ApiService
+    private api: ApiService,
+    private storage: StorageService
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +32,17 @@ export class HeaderComponent implements OnInit {
     this.event.totalAddedcartValue.subscribe((res) => {
       this.cartNumber = res;
     });
+    this.event.isLogin.subscribe((res) => {
+      if (res) {
+        this.isLogedin = true;
+        if (this.storage.getUser()) {
+          this.userName = this.storage.getUser().name;
+        }
+      } else{
+        this.isLogedin = false;
+      }
+    });
+
   }
 
   jqueryImplement(): void {
@@ -41,7 +56,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openLogin(): any {
-    const dialogref = this.dialog.open(DefaultPopupComponent, {
+    const dialogref = this.dialog.open(LoginComponent, {
       width: '300',
       backdropClass: 'bdrop',
       data: {
@@ -59,5 +74,10 @@ export class HeaderComponent implements OnInit {
       },
       (err) => {}
     );
+  }
+  logout(): any {
+    this.event.setLoginEmmit(false);
+    this.storage.clearUser();
+    this.api.alert('logout successfully', 'success');
   }
 }

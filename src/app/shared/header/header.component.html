@@ -66,9 +66,15 @@
 
           <div class="shop-list">
             <ul>
-              <li><a class="fancybox" (click)="openLogin()">
+              <li *ngIf="!isLogedin"><a class="fancybox" (click)="openLogin()">
                <i><img src="./assets/images/user.svg" alt=""></i>
               </a></li>
+              <li *ngIf="isLogedin"><a class="fancybox">
+                {{userName ? 'Hi,' + userName : ''}}
+               </a></li>
+               <li *ngIf="isLogedin" style="cursor: pointer;" (click)="logout()"><a class="fancybox">
+                <i><img src="./assets/images/send-file.svg" alt=""></i>
+               </a></li>
               <li><a >
                <i><img src="./assets/images/heart.svg" alt=""></i>
               </a></li>

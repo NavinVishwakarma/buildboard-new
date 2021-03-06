@@ -1,0 +1,120 @@
+<ng-container *ngIf="data?.type === 'login' && !openRegister">
+  <svg (click)="dialogRef.close()" style="width: 24px;float: right;" xmlns="http://www.w3.org/2000/svg" version="1"
+    viewBox="0 0 24 24">
+    <path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path>
+  </svg>
+  <div class="myModal">
+    <div claas="modal-cont">
+      <div class="row modal-row">
+        <div class="col-md-12 modal-col">
+          <div class="modal-form">
+            <h3>{{!otpverificationforLogin ?'Log in':'Enter otp to login'}}</h3>
+            <form *ngIf="!otpverificationforLogin">
+              <div class="row form-row">
+                <div class="col-md-12 form-col">
+                  <div class="form-input">
+                    <input type="text" placeholder="Phone Number*" mask="0000000000"
+                      [formControl]="phoneNumberforLogin">
+                    <div class="error">
+                      <p *ngIf="phoneNumberforLogin.touched && phoneNumberforLogin.hasError('required')">
+                        This field is required.
+                      </p>
+                      <p *ngIf="phoneNumberforLogin.errors?.mask">
+                        Mobile number must be at least 10 digits long.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-md-12 form-col">
+                    <div class="form-input">
+                      <input type="password" placeholder="Password">
+                    </div>
+                  </div> -->
+                <div class="col-md-12 form-col"  (click)="login();phoneNumberforLogin.valid ?  lodingEnable = true: ''">
+                  <div class="form-input" *ngIf="!lodingEnable">
+                    <input type="submit">
+                  </div>
+                  <div class="loader" *ngIf="lodingEnable"></div>
+                </div>
+              </div>
+            </form>
+            <ng-otp-input *ngIf="otpverificationforLogin" style="display: flex;justify-content: center;margin-bottom: 20px;"
+            (onInputChange)="onOtpChange($event)" [config]="{length:4, allowNumbersOnly:true}">
+          </ng-otp-input>
+            <a class="fancybox" (click)="openRegister = !openRegister" *ngIf="!lodingEnable" style="cursor: pointer;">Don't have account Please Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="openRegister">
+  <svg (click)="dialogRef.close()" style="width: 24px;float: right;" xmlns="http://www.w3.org/2000/svg" version="1"
+    viewBox="0 0 24 24">
+    <path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path>
+  </svg>
+  <div class="myModal" id="two">
+    <div claas="modal-cont">
+      <div class="row modal-row">
+        <div class="col-md-12 modal-col">
+          <div class="modal-form">
+            <h3>{{!otpverification ?'Sign up':'Enter otp to verify'}}</h3>
+            <form [formGroup]="register" *ngIf="!otpverification">
+              <div class="row form-row">
+                <div class="col-md-12 form-col">
+                  <div class="form-input">
+                    <input type="text" placeholder="Full Name*" formControlName="full_name">
+                    <div class="error">
+                      <p
+                        *ngIf="register.controls.full_name.touched && register.controls.full_name.hasError('required')">
+                        This field is required.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 form-col">
+                  <div class="form-input">
+                    <input type="text" placeholder="Email*" formControlName="email">
+                    <div class="error">
+                      <p *ngIf="register.controls.email.touched && register.controls.email.hasError('required')">
+                        This field is required.
+                      </p>
+                      <p *ngIf="register.controls.email.touched && register.controls.email.hasError('pattern')">
+                        Email is invalid.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 form-col">
+                  <div class="form-input">
+                    <input type="tel" placeholder="Phone" mask="0000000000" formControlName="phone">
+                    <div class="error">
+                      <p *ngIf="register.controls.phone.touched && register.controls.phone.hasError('required')">
+                        This field is required.
+                      </p>
+                      <p *ngIf="register.controls['phone'].errors?.mask">
+                        Mobile number must be at least 10 digits long.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 form-col">
+                  <div class="form-input" *ngIf="!lodingEnable">
+                    <input type="submit" value="Sign Up"
+                      (click)="registerData(register.value);register.valid ?  lodingEnable = true: ''">
+                  </div>
+                  <div class="loader" *ngIf="lodingEnable"></div>
+                </div>
+              </div>
+            </form>
+            <ng-otp-input *ngIf="otpverification" style="display: flex;justify-content: center;margin-bottom: 20px;"
+              (onInputChange)="onOtpChange($event)" [config]="{length:4, allowNumbersOnly:true}">
+            </ng-otp-input>
+            <a class="fancybox"  *ngIf="!lodingEnable" (click)="openRegister = !openRegister">Already have a account Please Log in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
