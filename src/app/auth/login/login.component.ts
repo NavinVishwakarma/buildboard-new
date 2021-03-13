@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   otpverificationforLogin: boolean | undefined;
   phoneNumberforLogin = new FormControl('', [Validators.required]);
   userId: any;
+  @ViewChild('ngOtpInput') ngOtpInputRef: any;
   constructor(
     public dialogRef: MatDialogRef<LoginComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -26,8 +27,8 @@ export class LoginComponent implements OnInit {
   ) {
     this.openRegister = false;
     this.lodingEnable = false;
-    this.otpverification = false;
-    this.otpverificationforLogin = false;
+    this.otpverification = true;
+    this.otpverificationforLogin = true;
   }
 
   ngOnInit(): void {
@@ -107,6 +108,9 @@ export class LoginComponent implements OnInit {
         }
       );
     }
+  }
+  verifyotp(): any{
+
   }
   registerData(value: any): void {
     if (this.register.valid) {

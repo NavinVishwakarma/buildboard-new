@@ -8,7 +8,8 @@
       <div class="row modal-row">
         <div class="col-md-12 modal-col">
           <div class="modal-form">
-            <h3>{{!otpverificationforLogin ?'Log in':'Enter otp to login'}}</h3>
+            <h3 style="margin: 2px;">{{!otpverificationforLogin ?'Log in':'Verification code'}}</h3>
+            <p *ngIf="otpverificationforLogin" style="text-align: center;">Please enter the verification code sent to <br><b>+91 {{phoneNumberforLogin?.value}}</b></p>
             <form *ngIf="!otpverificationforLogin">
               <div class="row form-row">
                 <div class="col-md-12 form-col">
@@ -25,11 +26,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="col-md-12 form-col">
-                    <div class="form-input">
-                      <input type="password" placeholder="Password">
-                    </div>
-                  </div> -->
                 <div class="col-md-12 form-col"  (click)="login();phoneNumberforLogin.valid ?  lodingEnable = true: ''">
                   <div class="form-input" *ngIf="!lodingEnable">
                     <input type="submit">
@@ -41,6 +37,14 @@
             <ng-otp-input *ngIf="otpverificationforLogin" style="display: flex;justify-content: center;margin-bottom: 20px;"
             (onInputChange)="onOtpChange($event)" [config]="{length:4, allowNumbersOnly:true}">
           </ng-otp-input>
+          <p style="text-align: center;margin: 2px;">Didn't receive the OTP?</p>
+          <p style="text-align: center;cursor: pointer;"><u>Resend OTP?</u></p>
+          <div class="col-md-12 form-col" *ngIf="otpverificationforLogin">
+            <div class="form-input" *ngIf="!lodingEnable" style="margin: 0 auto; width: 27%;">
+              <input type="submit" value="Verify" (click)="verifyotp()">
+            </div>
+            <div class="loader" *ngIf="lodingEnable"></div>
+          </div>
             <a class="fancybox" (click)="openRegister = !openRegister" *ngIf="!lodingEnable" style="cursor: pointer;">Don't have account Please Sign Up</a>
           </div>
         </div>
@@ -108,9 +112,16 @@
                 </div>
               </div>
             </form>
-            <ng-otp-input *ngIf="otpverification" style="display: flex;justify-content: center;margin-bottom: 20px;"
+            <ng-otp-input #ngOtpInput *ngIf="otpverification" style="display: flex;justify-content: center;margin-bottom: 20px;"
               (onInputChange)="onOtpChange($event)" [config]="{length:4, allowNumbersOnly:true}">
             </ng-otp-input>
+            <div class="col-md-12 form-col">
+              <div class="form-input" *ngIf="otpverification" style="margin: 0 auto;width: 27%;">
+                <input type="submit" value="Verify"
+                  (click)="verifyotp()">
+              </div>
+              <div class="loader" *ngIf="lodingEnable"></div>
+            </div>
             <a class="fancybox"  *ngIf="!lodingEnable" (click)="openRegister = !openRegister">Already have a account Please Log in</a>
           </div>
         </div>

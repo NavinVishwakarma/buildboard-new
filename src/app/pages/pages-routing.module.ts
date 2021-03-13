@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CartComponent } from './cart/cart.component';
 import { CategoryComponent } from './category/category.component';
 import { HomeComponent } from './home/home.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'product-list/:categoryId',
     component: ProductListWithCategoryComponent
+  },
+  {
+    path: 'cart',
+    component: CartComponent
   },
   {
     path: '',

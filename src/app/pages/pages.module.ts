@@ -9,6 +9,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
 import { ProductListWithCategoryComponent } from './product-list-with-category/product-list-with-category.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ProductListWithCategoryComponent } from './product-list-with-category/p
     ProductDetailsComponent,
     PrivacyPolicyComponent,
     TermsAndConditionComponent,
-    ProductListWithCategoryComponent
+    ProductListWithCategoryComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

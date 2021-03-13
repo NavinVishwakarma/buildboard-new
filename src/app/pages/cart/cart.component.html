@@ -1,0 +1,119 @@
+<section class="cart-section cmn-gap">
+  <div class="container">
+      <div class="catr-cont">
+          <h2>Cart</h2>
+
+        <form>
+          <div class="row cart-row">
+            <div class="col-md-5 table-col">
+                <h4>PRODUCTS</h4>
+            </div>
+            <div class="col-md-3 table-col">
+                <h4>Delivery Date</h4>
+            </div>
+            <div class="col-md-2 table-col">
+                <h4>Quantity</h4>
+            </div>
+            <div class="col-md-2 table-col">
+                <h4>Total</h4>
+            </div>
+        </div>
+
+        <div class="row cart-details-row">
+          <div class="col-md-5 cart-details-col">
+
+            <h4>PRODUCTS</h4>
+
+            <div class="row cart-des-row">
+              <div class="col-md-4 cart-image">
+                <a href="#url"><img src="./assets/images/chair.jpg" alt=""></a>
+              </div>
+
+              <div class="col-md-8 cart-cont">
+
+                <h5>Oxford Sofa (Individual 3 Seater)</h5>
+                <p>
+                  Colour: Cobalt | Cushion Type: Soft | Sofa Size: Regular | Sofa Material: Fabric | Sofa Type: Regular
+                </p>
+
+                <div class="cart-description">
+                  <p>
+                    You will get a full refund if cancellation
+                    is done within 24 hours of order placement.
+                    Post the 24-hour window, you will be charged
+                    25% of the order value. Deliveries to
+                    Bhubaneswar, Chandigarh, Indore, Kanpur,
+                    Lucknow & Vizag pincodes will be done by
+                    our delivery partner. Unboxing & installation
+                    will be done by Urban Ladder technician.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-3 cart-details-col">
+
+            <h4>Delivery Date</h4>
+
+            <div class="cart-details-cont">
+              <p>By 2nd Apr, 2021</p>
+            </div>
+          </div>
+          <div class="col-md-2 cart-details-col">
+
+            <h4>Quantity</h4>
+            <div class="selct-sec">
+                <div class="form-input">
+                  <select>
+                    <option *ngFor="let item of numberArray; let i=index">{{item}}</option>
+                  </select>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-2 cart-details-col">
+            <h4>Total</h4>
+            <div class="cart-details-cont">
+              <a href="#url">₹36,299</a>
+              <a href="#url">X</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row payment-row">
+          <div class="col-md-7 payment-col">
+            <div class="payment-sec">
+              <img src="./assets/images/payment.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-md-5 payment-col">
+            <div class="delivery-cont">
+              <ul>
+                <li><span>Cart Total</span></li>
+                <li><span>₹36,299</span></li>
+                <li><span>Delivery Charges</span></li>
+                <li><span>FREE</span></li>
+                <li><span>Total Payable Amount</span></li>
+                <li><span>₹36,299</span></li>
+                <li><span>Booking Amount (Pay Now)</span></li>
+                <li><span>₹36,299</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-7 payment-col"></div>
+
+          <div class="col-md-5 payment-col">
+            <div class="submit-sec text-right">
+              <input type="submit" value="Checkout">
+            </div>
+          </div>
+
+        </div>
+
+        </form>
+      </div>
+  </div>
+</section>

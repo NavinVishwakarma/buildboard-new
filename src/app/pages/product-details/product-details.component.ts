@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { EventService } from 'src/app/services/event.service';
 declare var $: any;
@@ -11,11 +11,15 @@ declare var $: any;
 })
 export class ProductDetailsComponent implements OnInit {
   productDetail: any;
+  loadingenable: boolean |undefined;
   constructor(
     private activatedroute: ActivatedRoute,
     private api: ApiService,
-    private event: EventService
-  ) {}
+    private event: EventService,
+    private router: Router
+  ) {
+    this.loadingenable = false;
+  }
   slideConfigtestimonial = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -61,7 +65,11 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
   addTocart(): any {
-    this.productDetail.itemCount += 1;
-    this.event.setCartEmit(this.productDetail.itemCount);
+    // this.productDetail.itemCount += 1;
+    // this.event.setCartEmit(this.productDetail.itemCount);
+    setTimeout(() => {
+      this.router.navigate(['/cart']);
+      this.loadingenable = false;
+    }, 1500);
   }
 }

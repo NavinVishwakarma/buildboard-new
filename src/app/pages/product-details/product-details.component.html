@@ -51,7 +51,8 @@
             </div>
 
             <div class="cart-btn" style="cursor: pointer;">
-              <a class="cmn-btn" (click)="addTocart()">ADD TO CART</a>
+              <a class="cmn-btn" *ngIf="!loadingenable" (click)="addTocart();loadingenable = true">ADD TO CART</a>
+              <a class="cmn-btn loader" *ngIf="loadingenable">ADDING TO CART</a>
             </div>
           </div>
         </div>

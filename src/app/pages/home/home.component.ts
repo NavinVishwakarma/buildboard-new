@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-
+declare var $: any;
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   productFeaturedList: any;
   bannerImage: any;
   testimonial: any;
   featuredValue: any;
-  constructor(
-    private api: ApiService
-  ) {
+  constructor(private api: ApiService) {
     this.productFeaturedList = [];
-    this.featuredValue = 'latest'
+    this.featuredValue = 'latest';
   }
 
   slideConfig = {
@@ -30,10 +28,26 @@ export class HomeComponent implements OnInit {
     autoplay: true,
     autoplaySpeed: 4000,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3, } },
-      { breakpoint: 991, settings: { slidesToShow: 1, slidesToScroll: 1, dots: true, autoplay: true, } },
-      { breakpoint: 767, settings: { slidesToShow: 1, slidesToScroll: 1, dots: true, autoplay: true, } }
-    ]
+      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3 } },
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+          autoplay: true,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+          autoplay: true,
+        },
+      },
+    ],
   };
   slideConfigtestimonial = {
     slidesToShow: 1,
@@ -44,19 +58,35 @@ export class HomeComponent implements OnInit {
     autoplay: true,
     autoplaySpeed: 2000,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3, } },
-      { breakpoint: 991, settings: { slidesToShow: 1, slidesToScroll: 1, dots: true, autoplay: true, } },
-      { breakpoint: 767, settings: { slidesToShow: 1, slidesToScroll: 1, dots: true, autoplay: true, } }
-    ]
+      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3 } },
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+          autoplay: true,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+          autoplay: true,
+        },
+      },
+    ],
   };
-  bannerslideConfig = {
-
-  }
+  bannerslideConfig = {};
   ngOnInit(): void {
     // this.getProductFeaturedList();
     this.getBannerList();
     // this.getTestimonial();
   }
+
+
   getProductFeaturedList() {
     this.api.get('user/products').subscribe((res: any) => {
       if (res.success) {
@@ -93,7 +123,7 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-  getFetureproductvalue(type: any){
-    this.featuredValue = type
+  getFetureproductvalue(type: any) {
+    this.featuredValue = type;
   }
 }
