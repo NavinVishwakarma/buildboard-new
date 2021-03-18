@@ -46,12 +46,19 @@
 
           <div class="collapse navbar-collapse" [ngClass]="{'show': toggelNavbar}" id="navbarSupportedContent">
             <ul class="navbar-nav">
-            <li ><a routerLink='./' [routerLinkActiveOptions]="{exact: true}" routerLinkActive="current-menu-item">Home</a></li>
+            <li>
+              <a routerLink='./' [routerLinkActiveOptions]="{exact: true}" routerLinkActive="current-menu-item">
+                Home
+              </a>
+            </li>
             <li class="menu-item-has-children" (click)="toggeleSubmenu = !toggeleSubmenu">
-              <a [routerLink]="['/category']" routerLinkActive="current-menu-item" >category</a>
-              <ul id="closeOnclick" class="sub-menu" [ngClass]="{'show': toggeleSubmenu}">
+              <a class="list_item" [routerLink]="['/category']" routerLinkActive="current-menu-item" (mouseover)="hideDiv=true">
+                category
+              </a>
+              <ul id="closeOnclick" class="sub-menu" [ngClass]="{'show': toggeleSubmenu}" *ngIf="hideDiv">
                   <li *ngFor="let item of categoryList; let i=index">
                     <a [routerLink]="['/product-list',item?.id]">{{item?.name}}</a>
+                    <!-- (click)="disableDropdown()" -->
                   </li>
               </ul>
             </li>
@@ -69,18 +76,23 @@
               <li *ngIf="!isLogedin"><a class="fancybox" (click)="openLogin()">
                <i><img src="./assets/images/user.svg" alt=""></i>
               </a></li>
-              <li *ngIf="isLogedin"><a class="fancybox">
+              <li class="menu-item-has-children" *ngIf="isLogedin">
+                <a class="fancybox">
                 {{userName ? 'Hi,' + userName : ''}}
-               </a></li>
+               </a>
                <li *ngIf="isLogedin" style="cursor: pointer;" (click)="logout()"><a class="fancybox">
                 <i><img src="./assets/images/send-file.svg" alt=""></i>
+               </a></li>
+               <li *ngIf="isLogedin" style="cursor: pointer;" ><a class="fancybox"
+                [routerLink]="['/account']" routerLinkActive="current-menu-item">
+                <i><img src="./assets/images/settings.svg" alt=""></i>
                </a></li>
               <li><a >
                <i><img src="./assets/images/heart.svg" alt=""></i>
               </a></li>
-              <li><a >
+              <li><a (click)="openCart()" style="cursor: pointer;">
                <i><img src="./assets/images/cart.svg" alt=""></i>
-               <span>{{cartNumber}}</span>
+               <span>{{cartItemNumber ? cartItemNumber : 0}}</span>
               </a></li>
             </ul>
           </div>

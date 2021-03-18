@@ -10,7 +10,7 @@ export class EventService {
   constructor(
     private storage: StorageService
   ) { }
-  private cartNumber = new BehaviorSubject(0);
+  private cartNumber = new BehaviorSubject(true);
   totalAddedcartValue = this.cartNumber.asObservable();
   private Login = new BehaviorSubject(this.storage.isAuthenticate());
   isLogin = this.Login.asObservable();
@@ -18,7 +18,7 @@ export class EventService {
   setLoginEmmit(isLogin: boolean): any {
     return this.Login.next(isLogin);
   }
-  setCartEmit(isLoading: number): void {
+  setCartEmit(isLoading: boolean): void {
     return this.cartNumber.next(isLoading);
   }
 }

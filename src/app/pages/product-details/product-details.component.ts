@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { EventService } from 'src/app/services/event.service';
+import { StorageService } from 'src/app/services/storage.service';
 declare var $: any;
 
 @Component({
@@ -11,12 +12,13 @@ declare var $: any;
 })
 export class ProductDetailsComponent implements OnInit {
   productDetail: any;
-  loadingenable: boolean |undefined;
+  loadingenable: boolean | undefined;
   constructor(
     private activatedroute: ActivatedRoute,
     private api: ApiService,
     private event: EventService,
-    private router: Router
+    private router: Router,
+    private storage: StorageService
   ) {
     this.loadingenable = false;
   }
@@ -60,16 +62,43 @@ export class ProductDetailsComponent implements OnInit {
       if (res.success) {
         this.productDetail = res.data;
         this.productDetail.itemCount = 0;
-        console.log(this.productDetail);
       }
     });
   }
   addTocart(): any {
     // this.productDetail.itemCount += 1;
     // this.event.setCartEmit(this.productDetail.itemCount);
-    setTimeout(() => {
-      this.router.navigate(['/cart']);
-      this.loadingenable = false;
-    }, 1500);
+    if (this.storage.getUser()) {
+      const data = {
+        vendor_id: this.productDetail.vendor_id ? this.productDetail.vendor_id : 'gadsjhgasdhj',
+        product_id: this.productDetail.product_id,
+        quantity: 1,
+        image: this.productDetail.image
+      };
+      this.api.post('user/cart/store', data).subscribe(
+        (res: any) => {
+          if (res.success) {
+            this.api.alert(res.message, 'success');
+            this.router.navigate(['/cart']);
+            this.loadingenable = false;
+            this.event.setCartEmit(true);
+          } else {
+            this.api.alert(res.message, 'warning');
+            this.loadingenable = false;
+          }
+        },
+        (err) => {
+          if (err) {
+            this.api.alert(
+              err.message ? err.message : 'Somthing went wrong',
+              'error'
+            );
+            this.loadingenable = false;
+          }
+        }
+      );
+    } else {
+      this.api.alert('Please Log in to continue', 'warning');
+    }
   }
 }

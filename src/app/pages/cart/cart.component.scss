@@ -1,0 +1,7 @@
+.addOpacity{
+  &.loader{
+    opacity: 0.1;
+    background: url(/assets/images/ajax-loader.gif) no-repeat center center;
+    background-size: 4%;
+  }
+}

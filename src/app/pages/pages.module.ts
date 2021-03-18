@@ -10,6 +10,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
 import { ProductListWithCategoryComponent } from './product-list-with-category/product-list-with-category.component';
 import { CartComponent } from './cart/cart.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CartComponent } from './cart/cart.component';
     PrivacyPolicyComponent,
     TermsAndConditionComponent,
     ProductListWithCategoryComponent,
-    CartComponent
+    CartComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

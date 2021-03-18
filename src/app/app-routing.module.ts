@@ -4,19 +4,22 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+    loadChildren: () =>
+      import('./pages/pages.module').then((m) => m.PagesModule),
   },
   {
     path: '',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{
-    scrollPositionRestoration: 'top',
-  })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'top',
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

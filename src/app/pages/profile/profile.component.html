@@ -1,0 +1,65 @@
+<section class="contact-sec cmn-gap">
+  <div class="container">
+    <h2 style="text-align: center;">Account</h2>
+    <div class="row contact-row">
+      <div class="col-lg-7 contact-col" style="margin: 0 auto;">
+        <div class="cotact-form">
+          <form [formGroup]="profileform">
+            <div class="row contact-form-row">
+              <div class="col-md-12 contact-form-col">
+                <div class="form-input">
+                  <input type="tel" placeholder="Mobile Number" mask="0000000000" formControlName="phone">
+                  <div class="error">
+                    <p *ngIf="profileform.controls.phone.touched && profileform.controls.phone.hasError('required')">
+                      This field is required.
+                    </p>
+                    <p *ngIf="profileform.controls['phone'].errors?.mask">
+                      Mobile number must be at least 10 digits long.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 contact-form-col">
+                <div class="form-input">
+                  <input type="text" placeholder="Full Name" formControlName="first_name">
+                  <div class="error">
+                    <p
+                      *ngIf="profileform.controls.first_name.touched && profileform.controls.first_name.hasError('required')">
+                      This field is required.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-12 contact-form-col">
+                <div class="form-input">
+                  <input type="email" placeholder="Email" formControlName="email">
+                  <div class="error">
+                    <p *ngIf="profileform.controls.email.touched && profileform.controls.email.hasError('required')">
+                      This field is required.
+                    </p>
+                    <p *ngIf="profileform.controls.email.touched && profileform.controls.email.hasError('pattern')">
+                      Email is invalid.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 contact-form-col">
+                <div class="form-input">
+                  <input type="submit" value="Add address" (click)="openaddressSection()">
+                </div>
+              </div>
+              <div class="col-md-12 contact-form-col">
+                <div class="form-input">
+                  <input type="submit" value="Update" (click)="submit(profileform?.value)">
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

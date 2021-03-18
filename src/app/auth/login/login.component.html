@@ -9,7 +9,7 @@
         <div class="col-md-12 modal-col">
           <div class="modal-form">
             <h3 style="margin: 2px;">{{!otpverificationforLogin ?'Log in':'Verification code'}}</h3>
-            <p *ngIf="otpverificationforLogin" style="text-align: center;">Please enter the verification code sent to <br><b>+91 {{phoneNumberforLogin?.value}}</b></p>
+            <p *ngIf="otpverificationforLogin" style="text-align: center;">Please enter the verification code sent to <br><b>+91 {{phoneNumberforLogin.value}}</b></p>
             <form *ngIf="!otpverificationforLogin">
               <div class="row form-row">
                 <div class="col-md-12 form-col">
@@ -26,9 +26,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-12 form-col"  (click)="login();phoneNumberforLogin.valid ?  lodingEnable = true: ''">
+                <div class="col-md-12 form-col">
                   <div class="form-input" *ngIf="!lodingEnable">
-                    <input type="submit">
+                    <input type="submit" value="Log in" (click)="login();phoneNumberforLogin.valid ?  lodingEnable = true: ''">
                   </div>
                   <div class="loader" *ngIf="lodingEnable"></div>
                 </div>
@@ -37,12 +37,17 @@
             <ng-otp-input *ngIf="otpverificationforLogin" style="display: flex;justify-content: center;margin-bottom: 20px;"
             (onInputChange)="onOtpChange($event)" [config]="{length:4, allowNumbersOnly:true}">
           </ng-otp-input>
-          <p style="text-align: center;margin: 2px;">Didn't receive the OTP?</p>
-          <p style="text-align: center;cursor: pointer;"><u>Resend OTP?</u></p>
+          <p style="text-align: center;margin: 2px;" *ngIf="otpverificationforLogin">Didn't receive the OTP?</p>
+          <p class="resend_otp"  [ngClass]="{'disabeled': ShowresendOtpForLogin}">
+            <u *ngIf="otpverificationforLogin" (click)="resentOtp();!ShowresendOtpForLogin? ajaxLoder = true: ''">Resend OTP?</u>
+            <img src="./assets/images/ajax-loader.gif" alt="" *ngIf="ajaxLoder">
+          </p>
           <div class="col-md-12 form-col" *ngIf="otpverificationforLogin">
             <div class="form-input" *ngIf="!lodingEnable" style="margin: 0 auto; width: 27%;">
-              <input type="submit" value="Verify" (click)="verifyotp()">
+              <input type="submit" value="Verify" (click)="verifyotp();OTP && OTP.length === 4 ? lodingEnable = true: ''">
             </div>
+          </div>
+          <div *ngIf="otpverificationforLogin" style="margin: 0 auto;width: 8%;">
             <div class="loader" *ngIf="lodingEnable"></div>
           </div>
             <a class="fancybox" (click)="openRegister = !openRegister" *ngIf="!lodingEnable" style="cursor: pointer;">Don't have account Please Sign Up</a>
@@ -63,7 +68,8 @@
       <div class="row modal-row">
         <div class="col-md-12 modal-col">
           <div class="modal-form">
-            <h3>{{!otpverification ?'Sign up':'Enter otp to verify'}}</h3>
+            <h3 style="margin:2px;">{{!otpverification ?'Sign up':'Verification code'}}</h3>
+            <p *ngIf="otpverification" style="text-align: center;">Please enter the verification code sent to <br><b>+91 {{register?.controls?.phone?.value}}</b></p>
             <form [formGroup]="register" *ngIf="!otpverification">
               <div class="row form-row">
                 <div class="col-md-12 form-col">
@@ -115,12 +121,20 @@
             <ng-otp-input #ngOtpInput *ngIf="otpverification" style="display: flex;justify-content: center;margin-bottom: 20px;"
               (onInputChange)="onOtpChange($event)" [config]="{length:4, allowNumbersOnly:true}">
             </ng-otp-input>
+            <p style="text-align: center;margin: 2px;" *ngIf="otpverification">Didn't receive the OTP?</p>
+            <p class="resend_otp" style="text-align: center;cursor: pointer;"
+             [ngClass]="{'disabeled': ShowresendOtpForLogin}">
+              <u *ngIf="otpverification" (click)="resentOtp();!ShowresendOtpForLogin? ajaxLoder = true: ''">Resend OTP?</u>
+              <img src="./assets/images/ajax-loader.gif" alt="" *ngIf="ajaxLoder">
+            </p>
             <div class="col-md-12 form-col">
               <div class="form-input" *ngIf="otpverification" style="margin: 0 auto;width: 27%;">
                 <input type="submit" value="Verify"
-                  (click)="verifyotp()">
+                  (click)="verifyotp(); OTP && OTP.length === 4 ? lodingEnable = true: ''" *ngIf="!lodingEnable">
               </div>
-              <div class="loader" *ngIf="lodingEnable"></div>
+              <div *ngIf="otpverification" style="margin: 0 auto;width: 8%;">
+                <div class="loader" *ngIf="lodingEnable"></div>
+              </div>
             </div>
             <a class="fancybox"  *ngIf="!lodingEnable" (click)="openRegister = !openRegister">Already have a account Please Log in</a>
           </div>

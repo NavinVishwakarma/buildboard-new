@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { ModelModule } from './model/model.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgOtpInputModule } from 'ng-otp-input';
     BrowserAnimationsModule,
     MaterialModule,
     NgxMaskModule.forRoot(),
-    NgOtpInputModule
+    NgOtpInputModule,
+    ModelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

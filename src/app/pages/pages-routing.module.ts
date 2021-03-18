@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../services/auth.guard';
 import { CartComponent } from './cart/cart.component';
 import { CategoryComponent } from './category/category.component';
 import { HomeComponent } from './home/home.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListWithCategoryComponent } from './product-list-with-category/product-list-with-category.component';
+import { ProfileComponent } from './profile/profile.component';
 import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
 
 
@@ -33,10 +35,17 @@ const routes: Routes = [
   {
     path: 'product-list/:categoryId',
     component: ProductListWithCategoryComponent
+
+  },
+  {
+    path: 'account',
+    component: ProfileComponent
+
   },
   {
     path: 'cart',
-    component: CartComponent
+    component: CartComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',

@@ -13,7 +13,8 @@
             <h4>{{item?.name}}</h4>
             <span> <del *ngIf="item?.offer_price">{{item?.price ? '₹' + item?.price : ''}}</del> {{item?.offer_price ?
               '₹'+item?.offer_price : '₹'+item?.price}}</span>
-            <a class="cmn-btn">add to cart</a>
+            <a class="cmn-btn" *ngIf="!item?.loadingenable" (click)="addTocart(item);item.loadingenable = true">add to cart</a>
+            <a class="cmn-btn loader" *ngIf="item?.loadingenable">ADDING TO CART</a>
           </div>
         </div>
       </div>
