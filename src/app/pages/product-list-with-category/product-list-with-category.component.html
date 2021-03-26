@@ -1,6 +1,6 @@
 <section class="catagorry-listing listing-page cmn-gap">
   <div class="container">
-    <h2 class="text-center">{{productList ? productList[0]?.category?.name : ''}}</h2>
+    <h2 class="text-center">{{productList ? (productList[0]?.category?.name) : ''}}</h2>
     <div class="product-row row" *ngIf="productList">
       <div class="col-lg-3 col-md-6 product-col" *ngFor="let item of productList">
         <div class="product-card">
@@ -10,11 +10,14 @@
             <span *ngIf="item?.percentage_off">{{item?.percentage_off ? '-' + item?.percentage_off + '%' : ''}}</span>
           </div>
           <div class="product-cont">
-            <h4>{{item?.name}}</h4>
+            <h4>{{item?.name| slice: 0 :20}}</h4>
             <span> <del *ngIf="item?.offer_price">{{item?.price ? '₹' + item?.price : ''}}</del> {{item?.offer_price ?
               '₹'+item?.offer_price : '₹'+item?.price}}</span>
-            <a class="cmn-btn" *ngIf="!item?.loadingenable" (click)="addTocart(item);item.loadingenable = true">add to cart</a>
-            <a class="cmn-btn loader" *ngIf="item?.loadingenable">ADDING TO CART</a>
+            <a class="cmn-btn" (click)="addTocart(item);item.loadingenable = true"
+              *ngIf="!item?.loadingenable && !item?.isAdded">add to
+              cart</a>
+            <a class="cmn-btn loader" *ngIf="item?.loadingenable && !item?.isAdded">ADDING TO CART</a>
+            <a class="cmn-btn loader" *ngIf="item?.isAdded">ADDED</a>
           </div>
         </div>
       </div>

@@ -14,11 +14,15 @@ export class EventService {
   totalAddedcartValue = this.cartNumber.asObservable();
   private Login = new BehaviorSubject(this.storage.isAuthenticate());
   isLogin = this.Login.asObservable();
-
+  private opensummarypage = new BehaviorSubject(false);
+  emmitesummarypage = this.opensummarypage.asObservable();
   setLoginEmmit(isLogin: boolean): any {
     return this.Login.next(isLogin);
   }
   setCartEmit(isLoading: boolean): void {
     return this.cartNumber.next(isLoading);
+  }
+  setsummarypageEmit(isLoading: boolean): void {
+    return this.opensummarypage.next(isLoading);
   }
 }

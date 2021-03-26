@@ -1,0 +1,29 @@
+.cart-details-row {
+ border: none;
+}
+// mat-card{
+//   margin: 20px;
+//   width: 50%;
+// }
+.header__address{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p{
+    font-size: 15px;
+    font-weight: 600;
+    color: #292929;
+  }
+}
+.itemlist{
+  display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    .cartItemList{
+      width: 50%;
+      padding: 0 15px;
+      margin-bottom: 20px;
+    }
+}
+

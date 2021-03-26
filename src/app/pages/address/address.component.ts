@@ -1,33 +1,27 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-default-popup',
-  templateUrl: './default-popup.component.html',
-  styleUrls: ['./default-popup.component.scss'],
+  selector: 'app-address',
+  templateUrl: './address.component.html',
+  styleUrls: ['./address.component.scss']
 })
-export class DefaultPopupComponent implements OnInit {
-  modeldata: any;
+export class AddressComponent implements OnInit {
   profileform: FormGroup;
   stateslist: any;
   addressList: any;
   openAddressform: boolean;
   addressid: any;
+
   constructor(
-    public dialogRef: MatDialogRef<DefaultPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
     private api: ApiService
-  ) {
-    console.log(data.type);
-    this.openAddressform = false;
-  }
+  ) { }
 
   ngOnInit(): void {
     this.formsInit();
-    this.getstatesList();
     this.getaddressList();
+    this.getstatesList();
   }
   formsInit(): any {
     this.profileform = new FormGroup({
@@ -41,15 +35,13 @@ export class DefaultPopupComponent implements OnInit {
       state_id: new FormControl('', [Validators.required]),
     });
   }
+
   submit(value: any): any {
-    console.log(this.profileform);
-    console.log(value);
     if (this.profileform.valid) {
       this.api.post('user/address/store', value).subscribe(
         (res: any) => {
-          console.log(res);
           if (res.success) {
-            this.getstatesList();
+            this.getaddressList();
             this.api.alert(res.message, 'success');
             this.openAddressform = false;
           } else {
@@ -69,6 +61,7 @@ export class DefaultPopupComponent implements OnInit {
       this.profileform.markAllAsTouched();
     }
   }
+
   getstatesList(): any {
     this.api.get('user/states').subscribe((res: any) => {
       if (res.success) {

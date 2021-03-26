@@ -43,8 +43,8 @@
               <h4>Quantity</h4>
               <div class="selct-sec">
                 <div class="form-input">
-                  <select style="width: 63%;margin-left: 13px;" (change)="getItemquantity($event, item)">
-                    <option *ngFor="let number of numberArray; let i=index" [value]="number">{{number}}</option>
+                  <select style="width: 63%;margin-left: 13px;" (change)="getItemquantity($event, item)" [value]='4'>
+                    <option style="padding: 20px;" *ngFor="let number of numberArray; let i=index"  [value]="number" [selected]="number === item?.quantity">{{number}}</option>
                   </select>
                 </div>
               </div>
@@ -79,7 +79,7 @@
             <div class="col-md-7 payment-col"></div>
             <div class="col-md-5 payment-col">
               <div class="submit-sec text-right">
-                <input type="submit" value="Checkout">
+                <input type="submit" value="Checkout" (click)="gotosummarypage()">
               </div>
             </div>
           </div>

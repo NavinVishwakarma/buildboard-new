@@ -35,7 +35,8 @@
           <div class="product-description">
             <h2>{{productDetail?.name}} - {{productDetail?.offer_price ? (productDetail?.offer_price | number: '.2') : (productDetail?.price | number: '.2')}}</h2>
             <div class="cart">
-              <a><img src="./assets/images/cart.svg" alt="">({{productDetail?.itemCount}})</a>
+              <a><img src="./assets/images/cart.svg" alt=""></a>
+              <!-- ({{productDetail?.itemCount}}) -->
             </div>
             <div class="stock">
               <span>Stock Available</span>

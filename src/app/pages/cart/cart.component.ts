@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { EventService } from 'src/app/services/event.service';
 import * as _ from 'underscore';
@@ -19,7 +20,8 @@ export class CartComponent implements OnInit {
   constructor(
     private api: ApiService,
     private sanitize: DomSanitizer,
-    private event: EventService
+    private event: EventService,
+    private router: Router
   ) {
     this.cartItemlist = [];
   }
@@ -52,7 +54,6 @@ export class CartComponent implements OnInit {
         if (res.success) {
           if (res.data.length > 0) {
             this.cartItemlist = res.data.map((items: any) => {
-              console.log(items);
               if (items.description) {
                 items.description = this.sanitize.bypassSecurityTrustHtml(
                   items.description
@@ -61,11 +62,9 @@ export class CartComponent implements OnInit {
                 items.description = '';
               }
               if (items.offer_price) {
-                this.totalAmount += items.offer_price;
-                console.log(this.totalAmount);
+                this.totalAmount += (items.offer_price * items.quantity);
               } else if (items.price) {
-                this.totalAmount += items.price;
-                console.log(this.totalAmount);
+                this.totalAmount += (items.price * items.quantity);
               }
               return items;
             });
@@ -89,6 +88,7 @@ export class CartComponent implements OnInit {
       (res: any) => {
         if (res.success) {
           this.api.alert(res.message, 'success');
+          this.getCartList();
         } else {
           this.api.alert(res.message, 'warning');
         }
@@ -126,5 +126,9 @@ export class CartComponent implements OnInit {
         }
       }
     );
+  }
+  gotosummarypage(): any{
+    this.router.navigate(['/summary']);
+    this.event.setsummarypageEmit(true);
   }
 }

@@ -21,10 +21,10 @@
               </div>
               <div class="col-md-12 contact-form-col">
                 <div class="form-input">
-                  <input type="text" placeholder="Full Name" formControlName="first_name">
+                  <input type="text" placeholder="Full Name" formControlName="full_name">
                   <div class="error">
                     <p
-                      *ngIf="profileform.controls.first_name.touched && profileform.controls.first_name.hasError('required')">
+                      *ngIf="profileform.controls.full_name.touched && profileform.controls.full_name.hasError('required')">
                       This field is required.
                     </p>
                   </div>
@@ -45,11 +45,19 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-12 contact-form-col">
+
+              <mat-card class="col-md-12 contact-form-col" style="margin: 0px 0px 10px 11px;width: 96%;cursor: pointer;"
+               (click)="openaddressSection()">
+                <h5 style="margin: 0px;">Address</h5>
+                <!-- <div class="addresSec" *ngFor="let item of addressList; let i=index">
+                  <span>{{item?.house_number}}</span>,&nbsp;<span>{{item?.area}}</span>,&nbsp;<span>{{item?.pincode}}</span>,&nbsp;<span>{{item?.landmark}}</span>,&nbsp;<span>{{item?.city}}</span><br>
+                </div> -->
+              </mat-card>
+              <!-- <div class="col-md-12 contact-form-col">
                 <div class="form-input">
-                  <input type="submit" value="Add address" (click)="openaddressSection()">
+                  <input type="submit" value="Address" (click)="openaddressSection()">
                 </div>
-              </div>
+              </div> -->
               <div class="col-md-12 contact-form-col">
                 <div class="form-input">
                   <input type="submit" value="Update" (click)="submit(profileform?.value)">

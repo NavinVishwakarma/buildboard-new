@@ -11,7 +11,10 @@ import { TermsAndConditionComponent } from './terms-and-condition/terms-and-cond
 import { ProductListWithCategoryComponent } from './product-list-with-category/product-list-with-category.component';
 import { CartComponent } from './cart/cart.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { AddressComponent } from './address/address.component';
+import { MaterialModule } from '../material.module';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -22,14 +25,18 @@ import { ProfileComponent } from './profile/profile.component';
     TermsAndConditionComponent,
     ProductListWithCategoryComponent,
     CartComponent,
-    ProfileComponent
+    ProfileComponent,
+    OrderSummaryComponent,
+    AddressComponent
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MaterialModule,
+    NgxMaskModule
   ]
 })
 export class PagesModule { }

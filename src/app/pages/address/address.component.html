@@ -1,4 +1,5 @@
-<div class="col-lg-7 contact-col" style="margin: 0 auto;" *ngIf="openAddressform && data.type !== 'place_order'">
+<div class="col-lg-7 contact-col" style="margin: 0 auto;" *ngIf="openAddressform">
+  <!-- && data.type !== 'place_order'" -->
   <h2 style="text-align: center;">Address</h2>
   <div class="cotact-form">
     <form [formGroup]="profileform">
@@ -94,9 +95,13 @@
             </p>
           </div>
         </div>
-        <div class="col-md-12 contact-form-col">
+        <div class="col-md-12 contact-form-col" style="display: flex;">
           <div class="form-input">
             <input type="submit" value="Save" (click)="submit(profileform?.value)">
+            <!-- (click)="submit(profileform?.value)" -->
+          </div>
+          <div class="form-input" style="margin-left: 10px;">
+            <input type="submit" value="Back" (click)="openAddressform = false" >
           </div>
         </div>
 
@@ -106,13 +111,40 @@
 </div>
 
 
-<ng-container *ngIf="!openAddressform && data.type !== 'place_order'">
-  <div class="scroll">
+<ng-container *ngIf="!openAddressform">
+  <div class="container">
+    <div class="scroll cmn-gap">
+      <mat-card *ngFor="let item of addressList; let i=index" style="margin: 10px;">
+        <div class="addresSec">
+          <div class="header__sec" style="display: flex;justify-content: space-between;">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="addressid">
+              <mat-radio-button class="example-radio-button" [value]="item.id">
+                <span><b>{{item?.full_name}}</b></span> <br>
+              </mat-radio-button>
+            </mat-radio-group>
+            <mat-icon aria-hidden="false" aria-label="Example home icon" style="color: #bbbbbb;font-size: 19px;">delete
+            </mat-icon>
+          </div>
+          <span>{{item?.house_number}}</span>,&nbsp;<span>{{item?.area}}</span>,&nbsp;<span>{{item?.pincode}}</span>,
+          &nbsp;<span>{{item?.landmark}}</span>,&nbsp;<span>{{item?.city}}</span><br>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-md-12 contact-form-col">
+      <div class="form-input">
+        <input type="submit" value="Add Address" (click)="openaddressSection()">
+      </div>
+    </div>
+  </div>
+</ng-container>
+<!-- *ngIf="data.type === 'place_order'" -->
+<!-- <ng-container *ngIf="!addressList">
+  <div class="container">
     <mat-card *ngFor="let item of addressList; let i=index" style="margin: 10px;">
       <div class="addresSec">
         <div class="header__sec" style="display: flex;justify-content: space-between;">
           <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="addressid">
-            <mat-radio-button class="example-radio-button" [value]="item.id">
+            <mat-radio-button class="example-radio-button" [value]="item">
               <span><b>{{item?.full_name}}</b></span> <br>
             </mat-radio-button>
           </mat-radio-group>
@@ -126,30 +158,9 @@
   </div>
   <div class="col-md-12 contact-form-col">
     <div class="form-input">
-      <input type="submit" value="Add Address" (click)="openaddressSection()">
-    </div>
-  </div>
-</ng-container>
+      <input type="submit" value="Save" >
 
-<ng-container *ngIf="data.type === 'place_order'">
-  <div class="scroll">
-    <mat-card *ngFor="let item of addressList; let i=index" style="margin: 10px;">
-      <div class="addresSec">
-        <div class="header__sec" style="display: flex;justify-content: space-between;">
-          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="addressid">
-            <mat-radio-button class="example-radio-button" [value]="item">
-              <span><b>{{item?.full_name}}</b></span> <br>
-            </mat-radio-button>
-          </mat-radio-group>
-        </div>
-        <span>{{item?.house_number}}</span>,&nbsp;<span>{{item?.area}}</span>,&nbsp;<span>{{item?.pincode}}</span>,
-        &nbsp;<span>{{item?.landmark}}</span>,&nbsp;<span>{{item?.city}}</span><br>
-      </div>
-    </mat-card>
-  </div>
-  <div class="col-md-12 contact-form-col">
-    <div class="form-input">
-      <input type="submit" value="Save" (click)="dialogRef.close({addressid: addressid})">
     </div>
   </div>
-</ng-container>
+</ng-container> -->
+<!-- (click)="dialogRef.close({addressid: addressid})" -->

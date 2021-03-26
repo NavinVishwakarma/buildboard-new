@@ -1,0 +1,83 @@
+<section class="cart-section cmn-gap">
+  <div class="container">
+    <div class="catr-cont">
+      <h2>Order Summary</h2>
+      <form class="itemlist" *ngIf="cartItemlist">
+        <ng-container *ngIf="cartItemlist">
+          <div class="cartItemList" *ngFor="let item of cartItemlist; let i=index">
+            <mat-card>
+              <div class="row cart-details-row addOpacity" [ngClass]="{'loader': item?.isLoder}">
+                <div class="col-md-5 cart-details-col">
+                  <h4>PRODUCTS</h4>
+                  <div class="row cart-des-row">
+                    <div class="col-md-4 cart-image">
+                      <a [routerLink]="['/product-details', item.id]">
+                        <img [src]="item?.image? item?.image : './assets/images/no_thumbnail.jpg'" alt="">
+                      </a>
+                    </div>
+                    <div class="col-md-8 cart-cont">
+                      <h5 [routerLink]="['/product-details', item.id]" style="cursor: pointer;">{{item?.name}}</h5>
+                      <div class="cart-details-cont">
+                        <a>{{item?.offer_price ? '₹' + item?.offer_price : item?.price ? '₹' + item?.price : ''}}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 cart-details-col">
+                </div>
+              </div>
+            </mat-card>
+          </div>
+          <div class="cartItemList">
+            <mat-card class="col-md-12 contact-form-col" style="cursor: pointer;">
+              <div class="header__address">
+                <h5 style="margin: 0px;">Address</h5>
+                <p (click)="openaddressSection()">{{'Change'}}</p>
+              </div>
+
+              <div class="addresSec">
+                <span><b>{{addressList?.full_name}}</b></span> <br>
+                <span>{{addressList?.house_number}}</span>,&nbsp;<span>{{addressList?.area}}</span>,&nbsp;<span>{{addressList?.pincode}}</span>,&nbsp;<span>{{addressList?.landmark}}</span>,&nbsp;<span>{{addressList?.city}}</span><br>
+              </div>
+            </mat-card>
+          </div>
+
+          <div class="cartItemList">
+            <mat-checkbox class="example-margin" [formControl]="isCashSelected">Pay with Cash on Delivery</mat-checkbox>
+          </div>
+          <div class="cartItemList">
+            <div class="row payment-row">
+              <mat-card>
+                <div class="col-md-12 payment-col">
+                  <div class="delivery-cont">
+                    <ul>
+                      <li><span>Price({{totalItem}})</span></li>
+                      <li><span>{{totalAmount ? '₹' + totalAmount : 0}}</span></li>
+                      <li><span>Delivery Charges</span></li>
+                      <li><span>FREE</span></li>
+                      <li><span>Total</span></li>
+                      <li><span>{{totalAmount ? '₹' + totalAmount : 0}}</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-7 payment-col"></div>
+                <div class="col-md-12 payment-col place_order_loder">
+                  <div class="submit-sec text-right" *ngIf="!lodingEnable">
+                    <input type="submit" value="Place order"
+                      (click)="placeorder();this.isCashSelected.value ? lodingEnable = true : ''">
+                  </div>
+                  <div class="loader" *ngIf="lodingEnable"></div>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+
+
+        </ng-container>
+      </form>
+      <ng-container *ngIf="!cartItemlist">
+        <p>Loading...</p>
+      </ng-container>
+    </div>
+  </div>
+</section>
